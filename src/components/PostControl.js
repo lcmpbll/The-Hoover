@@ -59,7 +59,9 @@ class PostControl extends React.Component {
       }
       const postControlContainer = {
         display: 'flex',
-        justifyContent: 'center'
+        bottom: '100px',
+        position: 'relative',
+        // overflowY: 'scroll',
       }
       return(
         <React.Fragment>

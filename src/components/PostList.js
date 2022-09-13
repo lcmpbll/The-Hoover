@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 function PostList(props) {
   const postCardStyles = {
-    
+    position: 'relative'
   }
   return(
     <React.Fragment>

@@ -5,9 +5,10 @@ import { v1 } from 'uuid';
 function NewPostForm(props){
   function handleNewPostFormSubmission(event) {
     event.preventDefault();
+    let date = new Date();
     props.onNewPostCreation({
       postTitle: event.target.postTitle.value,
-      postTime: v1(),
+      postTime: date.getHours() + ":" + date.getMinutes()  + " " + (date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getFullYear(),
       votes: 0,
       user: event.target.user.value,
       postContent: event.target.postContent.value,

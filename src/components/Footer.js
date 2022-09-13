@@ -5,13 +5,14 @@ function Footer(props){
   
   }
   const footerContainer = {
-    background: 'linear-gradient(360deg, rgb(231, 213, 177) 11%, rgb(207, 139, 24) 95%)',
+    background: 'linear-gradient(180deg, rgb(231, 213, 177) 11%, rgb(207, 139, 24) 95%)',
     position: 'fixed',
     bottom: '0px',
     width: '98vw',
-    paddingTop: '50px',
-    paddingBottom: '50px',
-    paddingLeft: '10px'
+    height: '100px',
+    paddingLeft: '10px',
+    display: 'flex',
+    alignItems: 'center'
   }
   return(
     <div style={footerContainer}>
