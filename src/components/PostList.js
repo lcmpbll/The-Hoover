@@ -6,10 +6,12 @@ function PostList(props) {
   const postCardStyles = {
     position: 'relative'
   }
+
+
   return(
     <React.Fragment>
       <div style={postCardStyles}>
-        {props.postList.map((post)=> (
+        {props.postList.sort(function(a, b){return b.votes - a.votes}).map((post)=> (
           <div key={post.id}>
             <Post
             whenPostClicked = {props.onPostSelection}

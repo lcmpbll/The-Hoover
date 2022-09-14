@@ -34,7 +34,7 @@ class PostControl extends React.Component {
   handleChangingSelectedPost = (id) => {
     const selectedPost = this.state.mainPostList.filter(post => post.id === id)[0];
     this.setState({selectedPost: selectedPost});
-    console.log(selectedPost);
+    
   }
 
   handleDecrementingVotes = () => {
@@ -49,7 +49,7 @@ class PostControl extends React.Component {
       this.handleChangingSelectedPost(this.state.selectedPost.id);
       this.setState({selectedPost: null});
     }
-    console.log(this.state.selectedPost);
+    
   };
 
   handleIncrementingVotes = () => {
@@ -64,7 +64,7 @@ class PostControl extends React.Component {
       this.handleChangingSelectedPost(this.state.selectedPost.id);
       this.setState({selectedPost: null});
     }
-    console.log(this.state.selectedPost);
+   
   };
  
      render() { 
