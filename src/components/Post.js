@@ -26,8 +26,8 @@ function Post(props){
   }
   return (
     <React.Fragment>
-      <div style={postStyles} onClick={() => props.whenPostClicked(props.id)}>
-        <div style={postTitleStyles}>
+      <div style={postStyles}>
+        <div style={postTitleStyles} onClick={() => props.whenPostClicked(props.id)}>
           <h1>{props.postTitle}</h1>
         </div>
         <div style={singleLine}>
@@ -42,7 +42,6 @@ function Post(props){
           </div>
         </div>
         <p>{props.postContent}</p>
-        <p>{props.id}</p>
       </div>
     </React.Fragment>
   );

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { v1 } from 'uuid';
+import { v4 } from 'uuid';
 
 function NewPostForm(props){
   function handleNewPostFormSubmission(event) {
@@ -12,18 +12,18 @@ function NewPostForm(props){
       votes: 0,
       user: event.target.user.value,
       postContent: event.target.postContent.value,
-      id: v1,
+      id: v4(),
     });
-    console.log(event.target.title.value);
+    
   }
   return (
     <React.Fragment>
       <form onSubmit={handleNewPostFormSubmission}>
-        <label htmlfor='postTitle'>Title:</label>
+        <label htmlFor='postTitle'>Title:</label>
         <input type='text' name='postTitle' placeholder='Post Title'/>
-        <label htmlfor='user'>User Name:</label>
+        <label htmlFor='user'>User Name:</label>
         <input type='text' name='user' placeholder='user name'/>
-        <label htmlfor='postContent'>Post content:</label>
+        <label htmlFor='postContent'>Post content:</label>
         <textarea type='text' name='postContent' placeholder='post content'/>
         <button type='submit'>post!</button>
       </form>

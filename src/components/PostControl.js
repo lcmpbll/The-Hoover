@@ -11,7 +11,6 @@ class PostControl extends React.Component {
       mainPostList: [],
       selectedPost: null,
     };
-  
   }
 
   handleClick = () => {
@@ -35,15 +34,44 @@ class PostControl extends React.Component {
   handleChangingSelectedPost = (id) => {
     const selectedPost = this.state.mainPostList.filter(post => post.id === id)[0];
     this.setState({selectedPost: selectedPost});
+    console.log(selectedPost);
   }
 
-  
+  handleDecrementingVotes = () => {
+    const votesToDecrement = this.state.selectedPost;
+    if (this.state.selectedPost.votes > 0) {
+      const quantityToDecrement = {
+        votes: (votesToDecrement.votes -= 1)
+      };
+      this.handleChangingSelectedPost(quantityToDecrement.id);
+      this.setState({selectedPost: null});
+    } else {
+      this.handleChangingSelectedPost(this.state.selectedPost.id);
+      this.setState({selectedPost: null});
+    }
+    console.log(this.state.selectedPost);
+  };
+
+  handleIncrementingVotes = () => {
+    const votesToIncrement = this.state.selectedPost;
+    if (this.state.selectedPost.votes >= 0) {
+      const quantityToIncrement = {
+        votes: (votesToIncrement.votes += 1)
+      };
+      this.handleChangingSelectedPost(quantityToIncrement.id);
+      this.setState({selectedPost: null});
+    } else {
+      this.handleChangingSelectedPost(this.state.selectedPost.id);
+      this.setState({selectedPost: null});
+    }
+    console.log(this.state.selectedPost);
+  };
  
      render() { 
       let currentlyVisibleState = null;
       let buttonText = null;
       if(this.state.selectedPost != null){
-        currentlyVisibleState = <PostDetail post= {this.state.selectedPost} />
+        currentlyVisibleState = <PostDetail post={this.state.selectedPost} onClickingDecrement={this.handleDecrementingVotes} onClickingIncrement={this.handleIncrementingVotes} />
         buttonText = "Return to Posts";
       }
       else if (this.state.formVisibleOnPage) {
@@ -78,3 +106,47 @@ class PostControl extends React.Component {
   
 }
 export default PostControl;
+
+// Ok, here is the function definition from our PostControl component:
+
+//   handleChangingSelectedPost = id => {
+//     const selectedPost = this.props.mainPostList[id];
+//     this.setState({ selectedPost: selectedPost });
+//   };
+
+//   handleDecrementingVotes = () => {
+//     const votesToDecrement = this.state.selectedPost;
+//     if (this.state.selectedPost.quantity !== 0) {
+//       const quantityToDecrement = {
+//         votes: (votesToDecrement.votes -= 1)
+//       };
+//       this.handleChangingSelectedPost(quantityToDecrement.id);
+//     } else {
+//       this.handleChangingSelectedPost(this.state.selectedPost.id);
+//     }
+//   };
+
+//   handleIncrementingVotes = () => {
+//     const votesToIncrement = this.state.selectedPost;
+//     if (this.state.selectedPost.quantity !== 0) {
+//       const quantityToIncrement = {
+//         votes: (votesToIncrement.votes += 1)
+//       };
+//       this.handleChangingSelectedPost(quantityToIncrement.id);
+//     } else {
+//       this.handleChangingSelectedPost(this.state.selectedPost.id);
+//     }
+//   };
+
+// Then we pass it in in the PostControl's render() block, for this else-if part:
+
+// } else if (this.state.selectedPost != null) {
+//       currentlyVisibleState = (
+//         <PostDetail
+//           post={this.state.selectedPost}
+//           onClickingDelete={this.handleDeletingPost}
+//           onClickingEdit={this.handleEditClick}
+//           onClickingDecrement={this.handleDecrementingVotes}
+//           onClickingIncrement={this.handleIncrementingVotes}
+//         />
+//       );
