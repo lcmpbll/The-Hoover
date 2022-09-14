@@ -30,19 +30,20 @@ function Post(props){
         <div style={postTitleStyles} onClick={() => props.whenPostClicked(props.id)}>
           <h1>{props.postTitle}</h1>
         </div>
-        <div style={singleLine}>
-          <div style={container}>
-            <h3>User: {props.user}</h3>
+          <div style={singleLine}>
+            <div style={container}>
+              <h3>User: {props.user}</h3>
+            </div>
+            <div style={container}>
+              <p>{props.postTime}</p>
+            </div>
+            <div style={container}>
+              <p>Votes: {props.votes}  </p>
+            </div>
           </div>
-          <div style={container}>
-            <p>{props.postTime}</p>
-          </div>
-          <div style={container}>
-            <p>Votes: {props.votes}  </p>
-          </div>
+          <p>{props.postContent}</p>
         </div>
-        <p>{props.postContent}</p>
-      </div>
+      
     </React.Fragment>
   );
 }

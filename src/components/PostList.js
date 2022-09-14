@@ -11,7 +11,7 @@ function PostList(props) {
   return(
     <React.Fragment>
       <div style={postCardStyles}>
-        {props.postList.sort(function(a, b){return b.votes - a.votes}).map((post)=> (
+        {Object.values(props.postList).map((post)=> (
           <div key={post.id}>
             <Post
             whenPostClicked = {props.onPostSelection}
@@ -22,18 +22,19 @@ function PostList(props) {
             postContent={post.postContent}
             id={post.id}
              />
-          
           </div>
         ))}
           
       </div>
     </React.Fragment>
-  )
+  );
 }
 
 PostList.propTypes = {
-  postList: PropTypes.array,
+  postList: PropTypes.object,
   onPostSelection: PropTypes.func
 };
 
 export default PostList;
+
+// (function(a, b){return b.votes - a.votes})

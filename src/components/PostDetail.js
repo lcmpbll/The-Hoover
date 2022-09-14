@@ -11,8 +11,8 @@ function PostDetail(props){
       <h4>{post.user}</h4>
       <h4>{post.postContent}</h4>
       <h4>Votes: {post.votes}</h4>
-      <button onClick={()=> onClickingDecrement(post.id)}>Blows</button>
-      <button onClick={()=> onClickingIncrement(post.id)}>Sucks</button>
+      <button onClick={()=> onClickingDecrement(post.id)}>Blows -</button>
+      <button onClick={()=> onClickingIncrement(post.id)}>Sucks +</button>
     </React.Fragment>
   )
 }
