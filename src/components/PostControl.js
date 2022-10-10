@@ -10,8 +10,9 @@ class PostControl extends React.Component {
   constructor(props){
    super(props);
     this.state = {
-      selectedPost: null,
+      mainPostList: [],
     };
+   
   }
 
   handleClick = () => {
@@ -33,7 +34,8 @@ class PostControl extends React.Component {
     dispatch(action);
     const action2 = a.toggleForm();
     dispatch(action2);
-
+  }
+  
   handleChangingSelectedPost = (id) => {
     const selectedPost = this.props.mainPostList[id];
     this.setState({selectedPost: selectedPost});
@@ -69,20 +71,20 @@ class PostControl extends React.Component {
    
   };
  
-     render() { 
+    render(){ 
       let currentlyVisibleState = null;
       let buttonText = null;
       if(this.state.selectedPost != null){
         currentlyVisibleState = <PostDetail post={this.state.selectedPost} onClickingDecrement={this.handleDecrementingVotes} onClickingIncrement={this.handleIncrementingVotes} />
         buttonText = "Return to Posts";
-      }
-      else if (this.props.formVisibleOnPage) {
+      } else if (this.props.formVisibleOnPage) {
         currentlyVisibleState = <NewPostForm onNewPostCreation={this.handleAddingNewPostToList} />
         buttonText = 'Return to Posts';
       } else {
         currentlyVisibleState = <PostList postList={this.props.mainPostList} onPostSelection={this.handleChangingSelectedPost} />;
         buttonText = "New Post";
       } 
+      //styles
       const postControlStyles = {
         textAlign: 'center',
         width: '100%'
@@ -93,6 +95,8 @@ class PostControl extends React.Component {
         position: 'relative',
         // overflowY: 'scroll',
       }
+    
+      
       return(
         <React.Fragment>
           <div style={postControlContainer}>
@@ -103,10 +107,9 @@ class PostControl extends React.Component {
           </div>
         </React.Fragment>
       );
-     }
-  
-  
-}
+    }
+  }
+// }
 
 PostControl.propTypes = {
   mainPostList: PropTypes.object,
